@@ -5,15 +5,22 @@ import { FaBookmark } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
 
 const GeneratedInformation = () => {
+
   const location = useLocation();
+  // find recipe information from the state 
   const { recipes, ingredients } = location.state || {};
   const [saved, setSaved] = useState(false);
+
   if (!recipes) {
     return <p>No recipes available</p>;
   }
-
+  // to save favourite in backend 
   const handleClick = async()=>{
     try{
+      if(saved){
+        
+        return toast.warning("Already added!");
+      }
       // console.log("Saved recipes", recipes)
       //api calling to save the response
       //Api calling
@@ -34,9 +41,10 @@ const GeneratedInformation = () => {
       toast.success('Saved Successfully!');
     }
     catch(error){
-      toast.error('An error occured while saving response');
+      toast.warning('Response already saved!');
     }
   }
+
 
   return (
     <div className='lg:px-10 md:px-8 px-5 lg:py-10 md:py-8 py-5 flex flex-col gap-2' 
@@ -45,6 +53,7 @@ const GeneratedInformation = () => {
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}>
+
       <div>
         {
           ingredients && (
@@ -60,58 +69,57 @@ const GeneratedInformation = () => {
       {/* dish details  */}
       <div>
         {/* dish name  */}
-        <h2 className='text-4xl'>
+        <h2 className='lg:text-4xl md:text-4xl text-3xl'>
           {recipes.dishName}
         </h2>
         {/* short description  */}
-        <p className='text-2xl text-textGrey '>
+        <p className='lg:text-2xl md:text-2xl text-xl text-textGrey '>
           {recipes.description}
         </p>
         {/* cooking time and difficulty  */}
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <h3 >Cooking Time: </h3> <span className='text-textGrey'>&nbsp; {recipes.cookingTime}</span>
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <h3 >Difficulty: </h3> <span className='text-textGrey'>&nbsp; {recipes.difficulty}</span>
         </p>
-
-        <h3 className='text-3xl' >Ingredients:</h3>
+        <h3 className='lg:text-3xl md:text-3xl text-2xl' >Ingredients:</h3>
         <ul>
           {recipes.ingredients.map((ingredient, index) => (
-            <li key={index} className='text-2xl text-textGrey '>
+            <li key={index} className='lg:text-2xl md:text-2xl text-xl text-textGrey '>
               - {ingredient}
             </li>
           ))}
         </ul>
 
-        <h3 className='text-3xl'>Steps to Prepare:</h3>
+        <h3 className='lg:text-3xl md:text-3xl text-2xl'>Steps to Prepare:</h3>
         <ol>
           {recipes.steps.map((step, index) => (
-            <li key={index} className='text-2xl text-textGrey '>
+            <li key={index} className='lg:text-2xl md:text-2xl text-xl text-textGrey '>
               - {step}
             </li>
           ))}
         </ol>
 
-        <h3 className='text-3xl'>
+        <h3 className='lg:text-3xl md:text-3xl text-2xl'>
           Nutritional Information:
         </h3>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Calories:</span> <span className='text-textGrey'>&nbsp; {recipes.nutrition.calories}</span> 
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Fat:</span> <span className='text-textGrey'>&nbsp; {recipes.nutrition.fat}</span> 
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Protein:</span> <span className='text-textGrey'>&nbsp; {recipes.nutrition.protein}</span>  
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Carbohydrates:</span> <span className='text-textGrey'>&nbsp; {recipes.nutrition.carbohydrates}</span>  
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Fiber:</span> <span className='text-textGrey'>&nbsp; {recipes.nutrition.fiber}</span>  
         </p>
-        <p className='text-2xl flex'>
+        <p className='lg:text-2xl md:text-2xl text-xl flex'>
           <span>Sugar:</span>  <span className='text-textGrey'>&nbsp; {recipes.nutrition.sugar}</span>
         </p>
       </div>

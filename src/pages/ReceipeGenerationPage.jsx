@@ -28,8 +28,8 @@ const ReceipeGenerationPage = () => {
         setLoading(false);
         return;
       }
-      console.log("Given prompt", ingredients);
-      console.log("Given Filters", receipeType, cookingTime, difficulty, dietPreference, restrictions);
+      // console.log("Given prompt", ingredients);
+      // console.log("Given Filters", receipeType, cookingTime, difficulty, dietPreference, restrictions);
       //storing all the filters in array
       const filters = [receipeType, cookingTime, difficulty, dietPreference, restrictions];
       //Api calling
@@ -49,8 +49,8 @@ const ReceipeGenerationPage = () => {
 
       const data = await response.json(); // Parse the JSON response
 
-      console.log("Recipe Generated Successfully!");
-      console.log("Generated Results Are:", data.response[0]);
+      // console.log("Recipe Generated Successfully!");
+      // console.log("Generated Results Are:", data.response[0]);
       // Parse the JSON string response if it is not already parsed
       const recipeData = typeof data.response[0] === 'string' ? JSON.parse(data.response[0]) : data.response[0];
       if (recipeData) {
@@ -61,7 +61,7 @@ const ReceipeGenerationPage = () => {
       }
     }
     catch (error) {
-      console.log("Error occured while generating", error);
+      // console.log("Error occured while generating", error);
       alert('An error Occured! Please try again');
     }
     finally {
@@ -70,30 +70,36 @@ const ReceipeGenerationPage = () => {
   }
 
   return (
-    <div className='flex flex-row-reverse justify-between lg:mx-10 md:mx-8 mx-5 py-5'>
-      <div className='flex items-center justify-center lg:w-[45%]  h-screen'>
-        {/* images here  */}
-        <div className='flex gap-3'>
-          <div className='flex flex-col gap-3'>
-            <img src={img1} alt="img1" width={200} />
-            <img src={img2} alt="img1" width={200} />
-
-          </div>
-          <img src={img3} alt="img3" width={200} />
-        </div>
-      </div>
-      {/* left side  */}
-      <div className='flex flex-col gap-6 lg:w-[45%] md:w-[75%] w-[100%] '>
-        <h1 className='lg:text-8xl md:text-6xl text-4xl font-medium leading-15'>Create Delicious Receipies in Seconds</h1>
-        <p className='lg:text-3xl text-2xl font-medium'>This is the most popular application which can tell you about receipies based on their selected ingredients. </p>
+    <div className='lg:mx-10 md:mx-8 mx-5 py-5'>
+      <div className='flex justify-between lg:flex-row flex-col-reverse'>
+        {/* heading  */}
+        <div className='lg:w-[45%] flex flex-col lg:gap-6 md:gap-6 gap-4 lg:justify-center'>
+        <h1 className='lg:text-8xl md:text-6xl text-5xl font-medium lg:text-start text-center'>Create Delicious Receipies in Seconds</h1>
+        <p className='lg:text-3xl md:text-3xl text-2xl font-medium'>This is the most popular application which can tell you about receipies based on their selected ingredients. </p>
         {/* genearte button  */}
         <div className='flex gap-4 text-2xl bg-grey py-2  rounded-full px-8 border-2 border-bgOrange '>
           <input type="text" placeholder='Enter ingredients' className='pb-2 px-4 outline-none rounded-md w-full' onChange={(e) => setIngredients(e.target.value)} />
           <button className={`bg-textOrange text-white  px-4 pt-0 ${loading ? "pb-0" : "pb-2"} rounded-md`} onClick={handleClick}>{loading ? (<Spinner />) : "Generate"}</button>
         </div>
+        </div>
+         {/* images here  */}
+        <div className='lg:py-5 py-8 flex items-center justify-center '>
+         
+        <div className='flex gap-3 h-fit '>
+          <div className='flex flex-col gap-3'>
+            <img src={img1} alt="img1" width={200} />
+            <img src={img2} alt="img1" width={200} />
+          </div>
+          <img src={img3} alt="img3" width={200} />
+        </div>
+        </div>
+      </div>
+      {/* filters & other stuffs */}
+      <div className='flex flex-col gap-6 '>
+
         {/* filters  */}
         <span className='text-2xl'>Select Filters</span>
-        <div className='flex gap-4 text-2xl text-textOrange'>
+        <div className='flex flex-wrap gap-4 text-2xl text-textOrange'>
           {/* Receipe Type  */}
           <select name="preparationTime" id="preparationTime" className='border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setReceipeType(e.target.value)}>
             <option value="Select">Receipe Type</option>
