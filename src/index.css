@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&family=Kavoon&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+*{
+    font-family: Katibeh;
+    margin: 0;
+    padding: 0;
+}
+/* Spinner CSS  */
+.spinner {
+    width: 25px; /* Adjusted size */
+    height: 25px; /* Adjusted size */
+    border-radius: 50%;
+    background: radial-gradient(farthest-side, #ffffff 92%, #0000) top/7px 7px no-repeat, /* Reduced thickness */
+                conic-gradient(#0000 30%, #ffffff); /* Changed color to white */
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 7px), #000 0); /* Adjusted mask for thickness */
+    animation: spinner-c7wet2 1s infinite linear;
+ }
+ 
+ @keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }
+ 
