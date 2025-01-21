@@ -24,7 +24,7 @@ const GeneratedInformation = () => {
       // console.log("Saved recipes", recipes)
       //api calling to save the response
       //Api calling
-      const response = await fetch('http://localhost:3001/api/v1/postFavourite', {
+      const response = await fetch('https://smart-receipe-generator.onrender.com/api/v1/postFavourite', {
         method: 'POST',
         headers: {
           "Content-type": 'application/json',

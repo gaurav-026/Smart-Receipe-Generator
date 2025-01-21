@@ -33,7 +33,7 @@ const ReceipeGenerationPage = () => {
       //storing all the filters in array
       const filters = [receipeType, cookingTime, difficulty, dietPreference, restrictions];
       //Api calling
-      const response = await fetch('http://localhost:3001/api/v1/generateResponse', {
+      const response = await fetch('https://smart-receipe-generator.onrender.com/api/v1/generateResponse', {
         method: 'POST',
         headers: {
           "Content-type": 'application/json',

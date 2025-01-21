@@ -17,7 +17,7 @@ const Recipes = () => {
     const fetchRecipes = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:3001/api/v1/getReceipeDetails', {
+            const response = await fetch('https://smart-receipe-generator.onrender.com/api/v1/getReceipeDetails', {
                 method: 'GET',
                 headers: {
                     'Content-type': 'application/json',

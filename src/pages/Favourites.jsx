@@ -17,7 +17,7 @@ const Favourites = () => {
   const fetchFavourites = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/api/v1/getFavourite', {
+      const response = await fetch('https://smart-receipe-generator.onrender.com/api/v1/getFavourite', {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
