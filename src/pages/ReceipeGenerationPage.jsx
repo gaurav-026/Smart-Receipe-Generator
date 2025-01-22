@@ -78,8 +78,8 @@ const ReceipeGenerationPage = () => {
         <p className='lg:text-3xl md:text-3xl text-2xl font-medium'>This is the most popular application which can tell you about receipies based on their selected ingredients. </p>
         {/* genearte button  */}
         <div className='flex gap-4 text-2xl bg-grey py-2  rounded-full px-8 border-2 border-bgOrange '>
-          <input type="text" placeholder='Enter ingredients' className='pb-2 px-4 outline-none rounded-md w-full' onChange={(e) => setIngredients(e.target.value)} />
-          <button className={`bg-textOrange text-white  px-4 pt-0 ${loading ? "pb-0" : "pb-2"} rounded-md`} onClick={handleClick}>{loading ? (<Spinner />) : "Generate"}</button>
+          <input type="text" placeholder='Enter ingredients' className='lg:pb-2 md:pb-2 pb-1 px-4 outline-none rounded-md w-full' onChange={(e) => setIngredients(e.target.value)} />
+          <button className={`bg-textOrange text-white  px-4 pt-0 ${loading ? "pb-0" : "lg:pb-2 md:pb-2 pb-1"} rounded-md`} onClick={handleClick}>{loading ? (<Spinner />) : "Generate"}</button>
         </div>
         </div>
          {/* images here  */}
@@ -101,7 +101,7 @@ const ReceipeGenerationPage = () => {
         <span className='text-2xl'>Select Filters</span>
         <div className='flex flex-wrap gap-4 text-2xl text-textOrange'>
           {/* Receipe Type  */}
-          <select name="preparationTime" id="preparationTime" className='border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setReceipeType(e.target.value)}>
+          <select name="preparationTime" id="preparationTime" className='border border-textOrange lg:pb-2 md:pb-2 pb-1  px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setReceipeType(e.target.value)}>
             <option value="Select">Receipe Type</option>
             <option value="breakfast">Breakfast</option>
             <option value="lunk">Lunch</option>
@@ -109,7 +109,7 @@ const ReceipeGenerationPage = () => {
             <option value="dinner">Dinner</option>
           </select>
           {/* Cooking time  */}
-          <select name="preparationTime" id="preparationTime" className='border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setCookingTime(e.target.value)} >
+          <select name="preparationTime" id="preparationTime" className='border border-textOrange lg:pb-2 md:pb-2 pb-1 px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setCookingTime(e.target.value)} >
             <option value="Select">Cooking Time</option>
             <option value="5-10min">5-10 mins</option>
             <option value="10-25min">15-25 mins</option>
@@ -117,14 +117,14 @@ const ReceipeGenerationPage = () => {
             <option value="40-90min">40-90 mins</option>
           </select>
           {/* Difficulty  */}
-          <select name="preparationTime" id="preparationTime" className=' border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setDifficulty(e.target.value)}>
+          <select name="preparationTime" id="preparationTime" className=' border border-textOrange lg:pb-2 md:pb-2 pb-1  px-4  rounded-md flex items-center outline-none appearance-none bg-lightOrange' onChange={(e) => setDifficulty(e.target.value)}>
             <option value="Select">Difficulty</option>
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
             <option value="hard">Hard</option>
           </select>
           {/* Diet Preference  */}
-          <select name="preparationTime" id="preparationTime" className='bg-lightOrange border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none' onChange={(e) => setDietPreference(e.target.value)}>
+          <select name="preparationTime" id="preparationTime" className='bg-lightOrange border border-textOrange lg:pb-2 md:pb-2 pb-1 px-4  rounded-md flex items-center outline-none appearance-none' onChange={(e) => setDietPreference(e.target.value)}>
             <option value="Select">Diet Preference</option>
             <option value="vegetarian">Vegetarian</option>
             <option value="vegan">Vegan</option>
@@ -132,7 +132,7 @@ const ReceipeGenerationPage = () => {
             <option value="omnivorous">Omnivorous</option>
           </select>
           {/* Restrictions */}
-          <select name="preparationTime" id="preparationTime" className='bg-lightOrange border border-textOrange pb-2 px-4  rounded-md flex items-center outline-none appearance-none' onChange={(e) => setRestrictions(e.target.value)} >
+          <select name="preparationTime" id="preparationTime" className='bg-lightOrange border border-textOrange lg:pb-2 md:pb-2 pb-1 px-4  rounded-md flex items-center outline-none appearance-none' onChange={(e) => setRestrictions(e.target.value)} >
             <option value="Select">Restrictions</option>
             <option value="low-fat">Low Fat</option>
             <option value="sugar-free">Sugar-Free</option>
@@ -144,14 +144,14 @@ const ReceipeGenerationPage = () => {
         {/* Example prompts  */}
         <span className='text-2xl'>Example Prompts</span>
         <div className='bg-lightOrange flex flex-wrap gap-2 px-4 py-4 rounded-md'>
-          <p className='px-3 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Bread, butter, and cheese</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Pasta, olive oil, and garlic</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Potatoes, carrots, and green beans</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Tomatoes, cucumbers, and onions</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Chicken breast, eggs, and yogurt</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Pineapple, mango, and coconut</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Orange juice, carrots, and ginger</p>
-          <p className='px-2 pb-2 text-textOrange w-fit rounded-full text-xl bg-white'>Almond milk, frozen berries, and bananas</p>
+          <p className='px-3 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Bread, butter, and cheese</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Pasta, olive oil, and garlic</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Potatoes, carrots, and green beans</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Tomatoes, cucumbers, and onions</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Chicken breast, eggs, and yogurt</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Pineapple, mango, and coconut</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Orange juice, carrots, and ginger</p>
+          <p className='px-2 lg:pb-2 md:pb-2 pb-1 text-textOrange w-fit rounded-full text-xl bg-white'>Almond milk, frozen berries, and bananas</p>
         </div>
       </div>
     </div>
