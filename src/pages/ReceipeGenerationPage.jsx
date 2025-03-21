@@ -28,12 +28,11 @@ const ReceipeGenerationPage = () => {
         setLoading(false);
         return;
       }
-      // console.log("Given prompt", ingredients);
-      // console.log("Given Filters", receipeType, cookingTime, difficulty, dietPreference, restrictions);
       //storing all the filters in array
       const filters = [receipeType, cookingTime, difficulty, dietPreference, restrictions];
       //Api calling
-      const response = await fetch('https://smart-receipe-generator.onrender.com/api/v1/generateResponse', {
+      // console.log("Calling api..")
+      const response = await fetch('http://localhost:3001/api/v1/generateResponse', {
         method: 'POST',
         headers: {
           "Content-type": 'application/json',
@@ -42,27 +41,29 @@ const ReceipeGenerationPage = () => {
           ingredients, filters
         }),
       })
+      // console.log("Waiting for response")
       // Check for response success
       if (!response.ok) {
         throw new Error("Failed to fetch recipe");
       }
 
-      const data = await response.json(); // Parse the JSON response
-
-      // console.log("Recipe Generated Successfully!");
-      // console.log("Generated Results Are:", data.response[0]);
-      // Parse the JSON string response if it is not already parsed
-      const recipeData = typeof data.response[0] === 'string' ? JSON.parse(data.response[0]) : data.response[0];
+      const data = await response.json();
+      const jsonString = data.response.replace(/^```json\s*/, "").replace(/```$/, "");
+    // Ensure proper parsing of JSON response
+    const recipeData = JSON.parse(jsonString);
+    console.log(recipeData);
       if (recipeData) {
         // Store the results in state or pass them to the new route
         navigate("/generatedReceipe", { state: { recipes: recipeData, ingredients: ingredients } });
       } else {
         alert("No recipes found. Please try again.");
       }
+
     }
     catch (error) {
-      // console.log("Error occured while generating", error);
+      console.log("Error occured while generating", error);
       alert('An error Occured! Please try again');
+      
     }
     finally {
       setLoading(false);

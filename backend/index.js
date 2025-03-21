@@ -3,10 +3,8 @@ const fileUpload = require("express-fileupload");
 require('dotenv').config();
 var cors = require('cors');
 
-
 const PORT = process.env.PORT || 4000;
 const app = express();
-
 
 app.use(cors({
     origin:'*'
@@ -21,7 +19,7 @@ app.use(fileUpload(
      tempFileDir : '/tmp/'
     }
  ));
- 
+
 const routes = require('./routes/route');
 
 //mount the api
@@ -38,3 +36,6 @@ dbConnect();
 app.get('/', (req, res)=>{
     res.send("Backend is Working. This is server page!");
 })
+
+
+

@@ -11,7 +11,7 @@ const geminiConfig = {
     maxOutputTokens: 4096,
 };
 const geminiModel = googleAI.getGenerativeModel({
-    model: "gemini-pro",
+ model: "gemini-2.0-flash-lite",
     geminiConfig,
 });
 
@@ -53,22 +53,23 @@ exports.generateResponse = async (req, res) => {
 
         //generate reponse form gemini ai
         const result = await geminiModel.generateContent(prompt);
-        const response = result.response.candidates;
+        const response = result.response.candidates[0].content.parts[0].text;
+        console.log(response);
         // Extract the 'text' field from each candidate (assuming an array)
-        const recipes = response.map(candidate => candidate.content.parts[0].text);
+        // const recipes = response.map(candidate => candidate.content.parts[0].text);
 
         console.log("Receipe Generated Successfully!")
         return res.status(200).json({
             success: true,
             message: "Response Generated Successfully!",
-            response: recipes,
+            response, 
         });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             success: false,
             message: "An Error Occurred while generating the response!",
-            error: error.response ? error.response.data : error.message,
+            error: error,
         });
     }
 };
